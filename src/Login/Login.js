@@ -1,8 +1,9 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css"
 import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 
 const Login = () => {
@@ -10,6 +11,31 @@ const Login = () => {
 const change = function() {
     navigate("/signup")
 }
+const [data,setData] = useState({
+  email : "",
+  password :""
+})
+
+
+const handleChange = (event) => {
+  let { name, value } = event.target;
+  setData({ ...data, [name]: value });
+}
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+console.log(data);
+
+
+axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
+    console.log(response)
+    navigate("/home")
+  })
+
+}
+
+
   return (
     <>
       <div className="container">
@@ -23,6 +49,8 @@ const change = function() {
                   type="email"
                   name="email"
                   id="email"
+                  value={data.email}
+                  onChange={handleChange}
                   placeholder="Enter Your Email ID"
                 />
               </div>
@@ -33,6 +61,8 @@ const change = function() {
                   type="text"
                   name="password"
                   id="password"
+                  value={data.password}
+                  onChange={handleChange}
                   placeholder="Enter Your password"
                 />
               </div>
@@ -41,7 +71,7 @@ const change = function() {
               </p>
             </div>
             <div className="btn-field">
-              <button type="button" id="submit">
+              <button type="button" id="submit" onClick={handleSubmit}>
                 Submit
               </button>
               <button type="button" id="reset">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faEnvelope,faUser,faKey } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 import "../Login/Login.css";
 
 
@@ -24,31 +25,43 @@ const [data, setData] = useState({
   password: "",
   confirmPassword: "",
 });
-const [status,setStatus] = useState(null)
+const [status,setStatus] = useState()
+
 
 
 const handleChange = (event) => {
   let{name,value} = event.target;
   setData({ ...data, [name]: value });
   
+  
 }
 const handleSubmit = (event) => {
   event.preventDefault();
-  if (!data.name || !data.password || data.email || data.confirmPassword) {
-    setStatus(false);
-  } else {
+
+  // if (!data.name || !data.password || data.email || data.confirmPassword) {
+  //   setStatus(false); if (!data.name || !data.password || !data.email || !data.confirmPassword)
+  // }
+  if (data.name && data.password && data.email && data.confirmPassword) {
     setStatus(true);
+  } else {
+    setStatus(false);
   }
+  // else {
+  //   setStatus(true);
+  // }
   console.log(data);
-  
-};
+  console.log(status);
+  status === true && axios.post("http://localhost:4000/signup", data)
+
+}
+
 
   return (
     <>
       <div className="container">
         <div className="form-box">
           <h1 className="title">Sign Up</h1>
-          <form action="" onSubmit={handleSubmit}>
+          <form>
             <div className="input-group">
               <div className="input-field">
                 <FontAwesomeIcon icon={faUser} className="icon" />
@@ -101,21 +114,21 @@ const handleSubmit = (event) => {
               </p>
             </div>
             <div className="btn-field">
-              <button type="button" id="submit">
+              <button type="button" id="submit" onClick={handleSubmit}>
                 Submit
               </button>
               <button type="button" id="reset">
                 Reset
               </button>
-              {status === false && (
-                <div className="alert alert-warning">
-                  Enter All fields Correctly
-                </div>
-              )}
-              {status === true && (
-                <div className="alert alert-success">Login Successful</div>
-              )}
             </div>
+            {status === false && (
+              <div className="alert alert-warning">
+                Enter All fields Correctly
+              </div>
+            )} 
+            {status === true && (
+              <div className="alert alert-success">Login Successful</div>
+            )}
           </form>
         </div>
       </div>

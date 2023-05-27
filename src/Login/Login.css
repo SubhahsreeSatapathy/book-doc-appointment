@@ -102,3 +102,15 @@ span {
 .input-group {
     height: 280px;
 }
+.alert-warning {
+    color:rgb(126, 19, 19);
+    background-color: rgb(225, 174, 174);
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.alert-success{
+    color: rgb(49, 117, 49);
+    background-color: rgb(153, 224, 153);
+    margin-top: 10px;
+    border-radius: 5px;
+}
