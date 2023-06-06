@@ -85,7 +85,7 @@ span {
     display: flex;
     justify-content: space-between;
 }
-
+/*
 .btn-field button {
     flex-basis: 48%;
     margin-top: 15px;
@@ -98,6 +98,7 @@ span {
     cursor: pointer;
     transition: background 1s;
 }
+*/
 
 .input-group {
     height: 280px;

@@ -4,7 +4,7 @@ import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
-
+import Button from "../atoms/Button"
 
 const Login = () => {
     var navigate = useNavigate();
@@ -71,12 +71,11 @@ axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
               </p>
             </div>
             <div className="btn-field">
-              <button type="button" id="submit" onClick={handleSubmit}>
+              {/* <button type="button" id="submit" onClick={handleSubmit}>
                 Submit
-              </button>
-              <button type="button" id="reset">
-                Reset
-              </button>
+              </button> */}
+              <Button onClick={handleSubmit}>Submit</Button>
+              <Button>Reset</Button>
             </div>
           </form>
         </div>

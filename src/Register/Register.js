@@ -4,6 +4,7 @@ import { faLock, faEnvelope,faUser,faKey } from "@fortawesome/free-solid-svg-ico
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import "../Login/Login.css";
+import Button from "../atoms/Button";
 
 
 const Register = () => {
@@ -114,12 +115,8 @@ const handleSubmit = (event) => {
               </p>
             </div>
             <div className="btn-field">
-              <button type="button" id="submit" onClick={handleSubmit}>
-                Submit
-              </button>
-              <button type="button" id="reset">
-                Reset
-              </button>
+              <Button onClick={handleSubmit}>Submit</Button>
+              <Button>Reset</Button>
             </div>
             {status === false && (
               <div className="alert alert-warning">

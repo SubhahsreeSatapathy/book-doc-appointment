@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
+import axios from "axios"
 import Cards from "./Cards";
-import "./Home.css";
-import { Grid } from "@mui/material";
 import Cardiology from "../assets/cards/cardiology.jpg";
 import Dermatology from "../assets/cards/Derma.png";
 import Neurology from "../assets/cards/neuro.png";
 import Radiology from "../assets/cards/radiology.webp";
 import Oncology from "../assets/cards/radio.avif";
 import Pediatric from "../assets/cards/pedia.jpg";
+import "./Home.css";
+//import { Grid } from "@mui/material";
+
 
 const Categories = () => {
+ const [data,setData] = useState()
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
+ useEffect(() => {
+   axios.get("http://localhost:4000/home").then((response) => {
+    setData(response.data)
+    //console.log(response)
+   });
+ },[]);
+console.log(data)
+ 
   return (
     <div className="card-container">
-      <Grid container spacing={2} className="grid">
+      {/* <Grid container spacing={2} className="grid">
         <Grid item xs={4}>
           <Cards
             heading="Cardiologists"
@@ -55,7 +71,11 @@ const Categories = () => {
             img={Pediatric}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
+      {data && data.map((e)=>{
+      return <Cards props={e} isLoaded={isLoaded} handleImageLoad = {handleImageLoad} />;
+      })}
+
     </div>
   );
 }
