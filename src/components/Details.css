@@ -1,4 +1,4 @@
-.card{
+.doctor{
             width: 300;
             height: 100%;
             display: flex;
@@ -9,7 +9,7 @@
             overflow: hidden;
             margin-bottom:10px
 }
-.card:hover {
+.doctor:hover {
         box-shadow: 0 8px 16px 8px rgba(82, 80, 80, 0.2);
         transform: translateY(-5px);
 }

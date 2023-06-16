@@ -25,13 +25,15 @@ const handleChange = (event) => {
 const handleSubmit = (event) => {
   event.preventDefault();
 
-console.log(data);
+//console.log(data);
 
 
 axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
-    console.log(response)
+    console.log(response.data[0]._id)
+    localStorage.setItem("userId", JSON.stringify(response.data[0]._id));
     navigate("/home")
   })
+//console.log("submitted")
 
 }
 
@@ -44,7 +46,7 @@ axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
           <form action="">
             <div className="input-group">
               <div className="input-field">
-                <FontAwesomeIcon icon={faLock} className="icon" />
+                <FontAwesomeIcon icon={faLock} className="login-icon" />
                 <input
                   type="email"
                   name="email"
@@ -56,7 +58,7 @@ axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
               </div>
 
               <div className="input-field">
-                <FontAwesomeIcon icon={faEnvelope} className="icon" />
+                <FontAwesomeIcon icon={faEnvelope} className="login-icon" />
                 <input
                   type="text"
                   name="password"
@@ -70,14 +72,18 @@ axios.get(`http://localhost:4000/login/${data.email}`).then((response)=>{
                 Doesn't have an account ?<span onClick={change}>Sign up</span>!
               </p>
             </div>
-            <div className="btn-field">
-              {/* <button type="button" id="submit" onClick={handleSubmit}>
+          </form>
+          
+            {/* <button type="button" id="submit" onClick={handleSubmit}>
                 Submit
               </button> */}
-              <Button onClick={handleSubmit}>Submit</Button>
-              <Button>Reset</Button>
-            </div>
-          </form>
+
+            {/* <Button>Reset</Button> */}
+          
+          <div className="btn-field">
+            <button onClick={handleSubmit}>submit</button>
+            <button>Reset</button>
+          </div>
         </div>
       </div>
     </>

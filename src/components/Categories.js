@@ -24,7 +24,7 @@ const Categories = () => {
     //console.log(response)
    });
  },[]);
-console.log(data)
+//console.log(data)
  
   return (
     <div className="card-container">

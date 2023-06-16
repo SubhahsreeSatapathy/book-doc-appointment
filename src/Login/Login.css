@@ -62,7 +62,7 @@
     padding: 18px 15px;
 }
 
-.icon {
+.login-icon {
     margin-left: 15%;
     color: #999;
 }
@@ -83,7 +83,20 @@ span {
 .btn-field {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+.btn-field>button{
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+    font-size: medium;
+    background-color: #3c00a0;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-field>button:hover{
+    background-color: #5a0245;
+    color: aquamarine;
 }
 /*
 .btn-field button {

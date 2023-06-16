@@ -65,7 +65,7 @@ const handleSubmit = (event) => {
           <form>
             <div className="input-group">
               <div className="input-field">
-                <FontAwesomeIcon icon={faUser} className="icon" />
+                <FontAwesomeIcon icon={faUser} className="login-icon" />
                 <input
                   type="text"
                   name="name"
@@ -77,7 +77,7 @@ const handleSubmit = (event) => {
               </div>
 
               <div className="input-field">
-                <FontAwesomeIcon icon={faLock} className="icon" />
+                <FontAwesomeIcon icon={faLock} className="login-icon" />
                 <input
                   type="email"
                   name="email"
@@ -89,7 +89,7 @@ const handleSubmit = (event) => {
               </div>
 
               <div className="input-field">
-                <FontAwesomeIcon icon={faEnvelope} className="icon" />
+                <FontAwesomeIcon icon={faEnvelope} className="login-icon" />
                 <input
                   type="password"
                   name="password"
@@ -100,7 +100,7 @@ const handleSubmit = (event) => {
                 />
               </div>
               <div className="input-field">
-                <FontAwesomeIcon icon={faKey} className="icon" />
+                <FontAwesomeIcon icon={faKey} className="login-icon" />
                 <input
                   type="password"
                   name="confirmPassword"
@@ -122,7 +122,7 @@ const handleSubmit = (event) => {
               <div className="alert alert-warning">
                 Enter All fields Correctly
               </div>
-            )} 
+            )}
             {status === true && (
               <div className="alert alert-success">Login Successful</div>
             )}
